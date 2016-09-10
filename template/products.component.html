@@ -3,10 +3,10 @@
 	<li *ngFor="let product of products"
 	[class.selected]="product === selectedProduct"
 	(click)="onSelect(product)">
-		<span class="badge">{{product.id}}</span> {{product.title}}
+		<span class="badge">{{product.Id}}</span> {{product.Title}}
 	</li>
 </ul>
 <div *ngIf="selectedProduct">
-	<h2>{{selectedProduct.title | uppercase}} is selected.</h2>
+	<h2>{{selectedProduct.Title | uppercase}} is selected.</h2>
 	<button (click)="gotoDetail(selectedProduct)">View Details</button>
 </div>

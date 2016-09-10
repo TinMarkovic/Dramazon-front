@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Product } from './product';
+import { Product } from './models';
 import { ProductService } from './product.service';
 
 @Component({
@@ -31,7 +31,7 @@ export class ProductsComponent implements OnInit {
 	}
 
 	gotoDetail(product: Product): void {
-		let link = ['/detail', product.id];
+		let link = ['/detail', product.Id];
 		this.router.navigate(link);
 	}
 }
