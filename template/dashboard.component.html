@@ -1,4 +1,7 @@
-<h3>Top Products</h3>
+<h3>
+    <span *ngIf="customer">{{customer.Username}}, hello! This is your cart! </span> 
+    <span *ngIf="customer == null">Here are some Top Products! </span>
+</h3>
 <div class="grid grid-pad">
 	<div *ngFor="let product of products" (click)="gotoDetail(product)" class="col-1-4">
 		<div class="module product">
@@ -6,3 +9,4 @@
 		</div>
 	</div>
 </div>
+<span *ngIf="customer"><button (click)="checkout()">Checkout</button></span> 

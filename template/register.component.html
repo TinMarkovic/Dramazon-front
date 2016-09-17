@@ -1,0 +1,27 @@
+<div>
+    <h2 *ngIf="auth.user == null">Register!</h2>
+    	<label>Username: </label>
+    	<input [(ngModel)]="customer.Username" placeholder="Username">
+</div>
+<div>
+    	<label>Password: </label>
+    	<input [(ngModel)]="customer.Password" placeholder="****">
+</div>
+<div>
+    	<label>Password: (repeat) </label>
+    	<input [(ngModel)]="passwordTest" placeholder="****">
+</div>
+<div>
+    	<label>Full name: </label>
+    	<input [(ngModel)]="customer.Fullname" placeholder="Full Name">
+</div>
+<div>
+    	<label>Address: </label>
+    	<input [(ngModel)]="customer.Address" placeholder="Address">
+</div>
+<div>
+    	<label>Email: </label>
+    	<input [(ngModel)]="customer.Email" placeholder="Email">
+</div>
+<button (click)="register()">Register</button>
+<button (click)="goBack()">Back</button>

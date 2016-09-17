@@ -1,0 +1,30 @@
+<div>
+    <h2>Add a new product!</h2>
+    	<label>Title: </label>
+    	<input [(ngModel)]="product.Title" placeholder="title">
+    </div>
+    <div>
+    	<label>Description: </label>
+    	<input [(ngModel)]="product.Description" placeholder="description">
+    </div>
+    <div>
+    	<label>Image link: </label>
+    	<input [(ngModel)]="product.Image" placeholder="image url">
+    </div>
+    <div>
+    	<label>Price: </label>
+            <input [(ngModel)]="product.Price" placeholder="price">
+    </div>
+    <div>
+    	<label>Tags: </label>
+        <div>
+            <span *ngFor="let tag of tags">
+                <input type="checkbox" [class.selected]="product.Tags.indexOf(tag) > -1" 
+                   (click)="onChange(tag)" />
+                {{ tag.Name }}<br/> 
+            </span>
+        </div>
+    	
+        </div>
+    <button (click)="save()">Save</button>
+    <button (click)="goBack()">Back</button>

@@ -1,51 +1,43 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, HttpModule } from '@angular/http';
 
-import { Product } from './models';
+import { Tag } from './models';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class ProductService {
-    private productsUrl = 'http://localhost:56010/api/products';  // URL to web api
+export class TagService {
+    private tagsUrl = 'http://localhost:56010/api/tags';  // URL to web api
 
     constructor(private http: Http) { }
 
-    getProducts(): Promise<Product[]> {
-        return this.http.get(this.productsUrl)
+    getTags(): Promise<Tag[]> {
+        return this.http.get(this.tagsUrl)
             .toPromise()
-            .then(response => response.json() as Product[])
-            .catch(this.handleError);
-    }
-
-    getProduct(id: number): Promise<Product> {
-        let url = `${this.productsUrl}/${id}`;
-        return this.http.get(url)
-            .toPromise()
-            .then(response => response.json() as Product)
+            .then(response => response.json() as Tag[])
             .catch(this.handleError);
     }
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
 
-    create(product: Product): Promise<Product> {
+    create(tag: Tag): Promise<Tag> {
         return this.http
-            .post(this.productsUrl, JSON.stringify(product), { headers: this.headers })
+            .post(this.tagsUrl, JSON.stringify(tag), { headers: this.headers })
             .toPromise()
             .then(res => res.json())
             .catch(this.handleError);
     }
 
-    update(product: Product): Promise<Product> {
-        let url = `${this.productsUrl}/${product.Id}`;
+    update(tag: Tag): Promise<Tag> {
+        let url = `${this.tagsUrl}/${tag.Id}`;
         return this.http
-            .put(url, JSON.stringify(product), { headers: this.headers })
+            .put(url, JSON.stringify(tag), { headers: this.headers })
             .toPromise()
-            .then(() => product)
+            .then(() => tag)
             .catch(this.handleError);
     }
 
     delete(id: number): Promise<void> {
-        let url = `${this.productsUrl}/${id}`;
+        let url = `${this.tagsUrl}/${id}`;
         return this.http.delete(url, { headers: this.headers })
             .toPromise()
             .then(() => null)
